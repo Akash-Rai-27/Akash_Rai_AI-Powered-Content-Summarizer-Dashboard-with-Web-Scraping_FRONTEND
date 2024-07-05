@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import authService from "./appwrite/auth"
 import {login, logout} from './store/authSlice'
 import dbService from './appwrite/db';
-import {setPost} from './store/authSlice'
+import {getData} from './store/authSlice'
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         if(userData) {
           dispatch(login({userData}))
           dbService.getUserData(userData.$id)
-              .then((response)=>(setPost(response.documents)
+              .then((response)=>(dispatch(getData(response.documents))
             // console.log('POST ::: ', post)
           ))
         }
