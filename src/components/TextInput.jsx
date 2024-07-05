@@ -63,7 +63,7 @@ function TextInput() {
 
                 <Button
                 type='submit'
-                className='mb-1 ml-36 px-2 py-2 '
+                className='mb-1 ml-36 px-2 py-2  '
                 >
                     Submit
                 </Button>

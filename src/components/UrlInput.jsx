@@ -19,6 +19,7 @@ function UrlInput() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [loading,setLoading] = useState(false); 
 
     
 
@@ -29,6 +30,7 @@ function UrlInput() {
         // console.log(userName)
         // console.log(searchedUrl)
         // console.log(data)
+        setLoading(true);
         try {
             // axios.get('https://api.github.com/users/Akash-Rai-27')
             axios.get(`https://scrape.abstractapi.com/v1/?api_key=${conf.abstractApiKey}&url=${searchedUrl}`)
@@ -39,6 +41,7 @@ function UrlInput() {
                     dispatch(getData(content))
                     if(response.data){
                         dbService.createUserData({userId,userName,searchedUrl})
+                        setLoading(false);
                         // alert("data sended")
                         navigate('/scrap')
                     }
@@ -53,6 +56,7 @@ function UrlInput() {
         } catch (error) {
             console.log(error)
             setError(error.message)
+            setLoading(false);
         }
     }
   return (
@@ -75,13 +79,20 @@ function UrlInput() {
 
             {error && (<p className='text-red-500 text-lg'>{error}</p>)}
 
-            <Button
+            {!loading && (<Button
             type= "submit"
             className='mb-1'
             >
                 Submit
-            </Button>
+            </Button>)}
+            {loading && (
+                <p className='text-teal-700 text-xl font-bold animate-pulse transition-all duration-200'>Processing...</p>
+            )}
             </form>
+            {/* {loading && (<span className="relative flex h-5 w-5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-600 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-5 w-5 bg-teal-600"></span>
+            </span>)} */}
         </div>
     </section>
   )
