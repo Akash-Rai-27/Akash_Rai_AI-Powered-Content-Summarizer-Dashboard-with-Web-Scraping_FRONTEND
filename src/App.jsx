@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import authService from "./appwrite/auth"
 import {login, logout} from './store/authSlice'
+import dbService from '../appwrite/db';
+import {setPost} from './store/authSlice'
 
 
 function App() {
@@ -17,6 +19,10 @@ function App() {
       .then((userData)=>{
         if(userData) {
           dispatch(login({userData}))
+          dbService.getUserData(userData.$id)
+              .then((response)=>(setPost(response.documents)
+            // console.log('POST ::: ', post)
+          ))
         }
         else {
           dispatch(logout())

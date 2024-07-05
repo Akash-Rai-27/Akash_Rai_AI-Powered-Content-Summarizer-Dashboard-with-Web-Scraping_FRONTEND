@@ -20,13 +20,13 @@ function History() {
     
     useEffect(()=>{
       if (authStatus && userId) {
-        console.table(authStatus,userName,typeof userId,post)
+        // console.table(authStatus,userName,typeof userId,post)
 
           if(userId){
 
             dbService.getUserData(userId)
-              .then((response)=>(setPost(response.documents), console.log(response),
-            console.log('POST ::: ', post)
+              .then((response)=>(setPost(response.documents)
+            // console.log('POST ::: ', post)
           ))
             
           }
