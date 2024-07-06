@@ -6,7 +6,7 @@ function Landing() {
     const navigate = useNavigate();
   return (
     <main className='bg-red-00'>
-        <div className='h-screen bg-lime-00 font-mono'>
+        <div className='bg-lime-00 font-mono'>
             <div className='flex flex-wrap justify-center w-full text-5xl py-4 text-teal-800 '>
                 <h2 className='underline decoration-lime-500 underline-offset-8' >Welcome,</h2>
             </div>
