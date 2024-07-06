@@ -120,7 +120,7 @@ By following industry standards and focusing on component reusability and a clea
 ---
 ### Ai summarizer
 ![alt text](./screenshots/image-6.png)
-![alt text](image-10.png)
+![alt text](./screenshots/image-10.png)
 ---
 ### Web Scraped 
 ![alt text](./screenshots/image-7.png) 
